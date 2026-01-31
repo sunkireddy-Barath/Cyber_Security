@@ -11,6 +11,7 @@ import AlertsView from "@/components/AlertsView";
 import ActionsView from "@/components/ActionsView";
 import AssetsView from "@/components/AssetsView";
 import ReportsView from "@/components/ReportsView";
+import SettingsView from "@/components/SettingsView";
 
 export default function Home() {
   const [activeView, setActiveView] = useState("overview");
@@ -35,6 +36,7 @@ export default function Home() {
           {activeView === "simulator" && <AttackSimulator />}
           {activeView === "executive" && <ExecutiveView />}
           {activeView === "reports" && <ReportsView />}
+          {activeView === "settings" && <SettingsView />}
         </main>
       </div>
     </div>

@@ -1,7 +1,7 @@
 {
-  "name": "CONTEXTA-dashboard-backend",
+  "name": "risklens-ai-backend",
   "version": "1.0.0",
-  "description": "Backend API for CONTEXTA Dashboard",
+  "description": "RiskLens AI - Context-Aware Threat Intelligence & Business Risk Platform Backend",
   "private": true,
   "scripts": {
     "dev": "nodemon index.js",
@@ -9,8 +9,8 @@
     "build": "echo 'No build needed'",
     "lint": "eslint ."
   },
-  "keywords": ["security", "risk", "dashboard"],
-  "author": "",
+  "keywords": ["security", "risk", "dashboard", "threat-intelligence", "cybersecurity"],
+  "author": "RiskLens AI Team",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2",
