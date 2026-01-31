@@ -9,6 +9,7 @@ import ExecutiveView from '@/components/ExecutiveView'
 import RisksView from '@/components/RisksView'
 import AlertsView from '@/components/AlertsView'
 import ActionsView from '@/components/ActionsView'
+import AssetsView from '@/components/AssetsView'
 
 export default function Home() {
   const [activeView, setActiveView] = useState('overview')
@@ -29,6 +30,7 @@ export default function Home() {
           {activeView === 'risks' && <RisksView />}
           {activeView === 'alerts' && <AlertsView />}
           {activeView === 'actions' && <ActionsView />}
+          {activeView === 'assets' && <AssetsView />}
           {activeView === 'simulator' && <AttackSimulator />}
           {activeView === 'executive' && <ExecutiveView />}
         </main>
