@@ -1,4 +1,4 @@
-import { Search, Bell, User, ChevronDown } from 'lucide-react'
+import { Search, Bell, User, ChevronDown } from "lucide-react";
 
 export default function TopNavBar() {
   return (
@@ -7,9 +7,9 @@ export default function TopNavBar() {
         {/* Logo */}
         <div className="flex items-center space-x-3">
           <div className="w-8 h-8 bg-primary rounded flex items-center justify-center">
-            <span className="text-white font-bold text-lg">R</span>
+            <span className="text-white font-bold text-lg">C</span>
           </div>
-          <span className="text-xl font-semibold text-gray-900">RiskLens AI</span>
+          <span className="text-xl font-semibold text-gray-900">CONTEXTA</span>
         </div>
 
         {/* Search Bar */}
@@ -45,5 +45,5 @@ export default function TopNavBar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }
