@@ -49,29 +49,29 @@ export default function TopRisksTable({ onShowMore }: TopRisksTableProps) {
   }
 
   return (
-    <div className="bg-white rounded-md border border-gray-200 p-4">
-      <h3 className="text-base font-semibold text-gray-900 mb-3">Top Risks Right Now</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-3">Top Risks Right Now</h3>
       <div className="overflow-x-auto">
         <table className="w-full text-xs">
           <thead>
-            <tr className="border-b border-gray-200">
-              <th className="text-left py-1.5 px-2 font-semibold text-gray-700">#</th>
-              <th className="text-left py-1.5 px-2 font-semibold text-gray-700">Risk Name</th>
-              <th className="text-left py-1.5 px-2 font-semibold text-gray-700">Score</th>
-              <th className="text-left py-1.5 px-2 font-semibold text-gray-700">Severity</th>
-              <th className="text-left py-1.5 px-2 font-semibold text-gray-700">Affected</th>
+            <tr className="border-b border-gray-200 dark:border-gray-700">
+              <th className="text-left py-1.5 px-2 font-semibold text-gray-700 dark:text-white">#</th>
+              <th className="text-left py-1.5 px-2 font-semibold text-gray-700 dark:text-white">Risk Name</th>
+              <th className="text-left py-1.5 px-2 font-semibold text-gray-700 dark:text-white">Score</th>
+              <th className="text-left py-1.5 px-2 font-semibold text-gray-700 dark:text-white">Severity</th>
+              <th className="text-left py-1.5 px-2 font-semibold text-gray-700 dark:text-white">Affected</th>
             </tr>
           </thead>
           <tbody>
             {displayedRisks.map((risk) => (
               <tr
                 key={risk.rank}
-                className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
+                className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors"
               >
-                <td className="py-2 px-2 font-medium text-gray-900">{risk.rank}</td>
-                <td className="py-2 px-2 text-gray-800">{risk.name}</td>
+                <td className="py-2 px-2 font-medium text-gray-900 dark:text-white">{risk.rank}</td>
+                <td className="py-2 px-2 text-gray-800 dark:text-white">{risk.name}</td>
                 <td className="py-2 px-2">
-                  <span className="font-semibold text-gray-900">{risk.score}</span>
+                  <span className="font-semibold text-gray-900 dark:text-white">{risk.score}</span>
                 </td>
                 <td className="py-2 px-2">
                   <span
@@ -82,7 +82,7 @@ export default function TopRisksTable({ onShowMore }: TopRisksTableProps) {
                     {risk.severity}
                   </span>
                 </td>
-                <td className="py-2 px-2 text-gray-700">{risk.affected} assets</td>
+                <td className="py-2 px-2 text-gray-700 dark:text-white">{risk.affected} assets</td>
               </tr>
             ))}
           </tbody>
@@ -91,7 +91,7 @@ export default function TopRisksTable({ onShowMore }: TopRisksTableProps) {
       {!showAll && (
         <button
           onClick={handleShowMore}
-          className="w-full mt-3 flex items-center justify-center space-x-1 py-2 text-primary hover:bg-blue-50 rounded transition-colors text-sm font-medium"
+          className="w-full mt-3 flex items-center justify-center space-x-1 py-2 text-primary hover:bg-blue-50 dark:hover:bg-gray-700 rounded transition-colors text-sm font-medium"
         >
           <span>Show More</span>
           <ChevronDown className="w-4 h-4" />
@@ -100,7 +100,7 @@ export default function TopRisksTable({ onShowMore }: TopRisksTableProps) {
       {showAll && (
         <button
           onClick={() => setShowAll(false)}
-          className="w-full mt-3 flex items-center justify-center space-x-1 py-2 text-primary hover:bg-blue-50 rounded transition-colors text-sm font-medium"
+          className="w-full mt-3 flex items-center justify-center space-x-1 py-2 text-primary hover:bg-blue-50 dark:hover:bg-gray-700 rounded transition-colors text-sm font-medium"
         >
           <span>Show Less</span>
           <ChevronUp className="w-4 h-4" />

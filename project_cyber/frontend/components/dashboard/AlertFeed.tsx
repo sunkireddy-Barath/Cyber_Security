@@ -37,21 +37,21 @@ export default function AlertFeed({ onViewAll }: AlertFeedProps) {
   }
 
   return (
-    <div className="bg-white rounded-md border border-gray-200 p-4">
-      <h3 className="text-base font-semibold text-gray-900 mb-3">Real-Time Alert Feed</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-3">Real-Time Alert Feed</h3>
       <div className="space-y-2">
         {alerts.map((alert, index) => {
           const Icon = alert.icon
           return (
             <div
               key={index}
-              className={`border-l-4 ${getAlertStyle(alert.type)} p-2 rounded-r hover:shadow-sm transition-shadow cursor-pointer`}
+              className={`border-l-4 ${getAlertStyle(alert.type)} dark:bg-gray-700 p-2 rounded-r hover:shadow-sm transition-shadow cursor-pointer`}
             >
               <div className="flex items-start space-x-2">
                 <Icon className={`w-3 h-3 mt-0.5 ${getIconColor(alert.type)}`} />
                 <div className="flex-1">
-                  <p className="text-xs text-gray-800 font-medium">{alert.message}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">{alert.time}</p>
+                  <p className="text-xs text-gray-800 dark:text-white font-medium">{alert.message}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-300 mt-0.5">{alert.time}</p>
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@ export default function AlertFeed({ onViewAll }: AlertFeedProps) {
       </div>
       <button
         onClick={onViewAll}
-        className="w-full mt-3 flex items-center justify-center space-x-1 py-2 text-primary hover:bg-blue-50 rounded transition-colors text-sm font-medium"
+        className="w-full mt-3 flex items-center justify-center space-x-1 py-2 text-primary hover:bg-blue-50 dark:hover:bg-gray-700 rounded transition-colors text-sm font-medium"
       >
         <span>View All Alerts</span>
         <ChevronRight className="w-4 h-4" />

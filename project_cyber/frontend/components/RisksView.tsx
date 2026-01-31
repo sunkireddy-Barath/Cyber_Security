@@ -30,9 +30,9 @@ export default function RisksView() {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Top 10 Risks Dashboard</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Top 10 Risks Dashboard</h1>
         <div className="flex items-center space-x-2">
-          <button className="px-4 py-2 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+          <button className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
             Filter
           </button>
           <button className="px-4 py-2 bg-primary text-white rounded-md text-sm font-medium hover:bg-primary-dark transition-colors">
@@ -41,32 +41,32 @@ export default function RisksView() {
         </div>
       </div>
 
-      <div className="bg-white rounded-md border border-gray-200 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6 transition-colors">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b-2 border-gray-200">
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Rank</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Risk Name</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Category</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Score</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Severity</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Affected Assets</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Last Detected</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Actions</th>
+              <tr className="border-b-2 border-gray-200 dark:border-gray-700">
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Rank</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Risk Name</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Category</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Score</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Severity</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Affected Assets</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Last Detected</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Actions</th>
               </tr>
             </thead>
             <tbody>
               {risks.map((risk) => (
                 <tr
                   key={risk.rank}
-                  className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
+                  className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700 cursor-pointer transition-colors"
                 >
-                  <td className="py-4 px-3 font-bold text-gray-900">{risk.rank}</td>
-                  <td className="py-4 px-3 text-gray-800 font-medium">{risk.name}</td>
-                  <td className="py-4 px-3 text-gray-600">{risk.category}</td>
+                  <td className="py-4 px-3 font-bold text-gray-900 dark:text-white">{risk.rank}</td>
+                  <td className="py-4 px-3 text-gray-800 dark:text-white font-medium">{risk.name}</td>
+                  <td className="py-4 px-3 text-gray-600 dark:text-white">{risk.category}</td>
                   <td className="py-4 px-3">
-                    <span className="font-bold text-gray-900 text-base">{risk.score}</span>
+                    <span className="font-bold text-gray-900 dark:text-white text-base">{risk.score}</span>
                   </td>
                   <td className="py-4 px-3">
                     <span
@@ -77,8 +77,8 @@ export default function RisksView() {
                       {risk.severity}
                     </span>
                   </td>
-                  <td className="py-4 px-3 text-gray-700">{risk.affected} assets</td>
-                  <td className="py-4 px-3 text-gray-600">{risk.lastDetected}</td>
+                  <td className="py-4 px-3 text-gray-700 dark:text-white">{risk.affected} assets</td>
+                  <td className="py-4 px-3 text-gray-600 dark:text-white">{risk.lastDetected}</td>
                   <td className="py-4 px-3">
                     <button className="px-3 py-1 bg-primary text-white rounded text-xs font-medium hover:bg-primary-dark transition-colors">
                       View Details

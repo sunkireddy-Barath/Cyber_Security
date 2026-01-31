@@ -25,7 +25,7 @@ export default function ActionsView() {
       case 'low':
         return 'bg-gray-400 text-white'
       default:
-        return 'bg-gray-300 text-gray-800'
+        return 'bg-gray-300 text-gray-800 dark:text-white'
     }
   }
 
@@ -36,18 +36,18 @@ export default function ActionsView() {
       case 'in-progress':
         return 'bg-blue-100 text-blue-800'
       case 'pending':
-        return 'bg-gray-100 text-gray-800'
+        return 'bg-gray-100 text-gray-800 dark:text-white'
       default:
-        return 'bg-gray-100 text-gray-800'
+        return 'bg-gray-100 text-gray-800 dark:text-white'
     }
   }
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">Recommended Actions Dashboard</h1>
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Recommended Actions Dashboard</h1>
         <div className="flex items-center space-x-2">
-          <button className="px-4 py-2 bg-white border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors">
+          <button className="px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 rounded-md text-sm font-medium text-gray-700 dark:text-white hover:bg-gray-50 transition-colors">
             Filter by Priority
           </button>
           <button className="px-4 py-2 bg-primary text-white rounded-md text-sm font-medium hover:bg-primary-dark transition-colors">
@@ -56,18 +56,18 @@ export default function ActionsView() {
         </div>
       </div>
 
-      <div className="bg-white rounded-md border border-gray-200 p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b-2 border-gray-200">
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">ID</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Action</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Priority</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Status</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Assignee</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">ETA</th>
-                <th className="text-left py-3 px-3 font-semibold text-gray-700">Actions</th>
+              <tr className="border-b-2 border-gray-200 dark:border-gray-700">
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">ID</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Action</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Priority</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Status</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Assignee</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">ETA</th>
+                <th className="text-left py-3 px-3 font-semibold text-gray-700 dark:text-white">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -78,11 +78,11 @@ export default function ActionsView() {
                     key={action.id}
                     className="border-b border-gray-100 hover:bg-gray-50 cursor-pointer transition-colors"
                   >
-                    <td className="py-4 px-3 font-medium text-gray-900">#{action.id}</td>
+                    <td className="py-4 px-3 font-medium text-gray-900 dark:text-white">#{action.id}</td>
                     <td className="py-4 px-3">
                       <div className="flex items-center space-x-2">
-                        <Icon className="w-4 h-4 text-gray-600" />
-                        <span className="text-gray-800 font-medium">{action.label}</span>
+                        <Icon className="w-4 h-4 text-gray-600 dark:text-white" />
+                        <span className="text-gray-800 dark:text-white font-medium">{action.label}</span>
                       </div>
                     </td>
                     <td className="py-4 px-3">
@@ -103,8 +103,8 @@ export default function ActionsView() {
                         {action.status}
                       </span>
                     </td>
-                    <td className="py-4 px-3 text-gray-700">{action.assignee}</td>
-                    <td className="py-4 px-3 text-gray-600">{action.eta}</td>
+                    <td className="py-4 px-3 text-gray-700 dark:text-white">{action.assignee}</td>
+                    <td className="py-4 px-3 text-gray-600 dark:text-white">{action.eta}</td>
                     <td className="py-4 px-3">
                       <button className="px-3 py-1 bg-primary text-white rounded text-xs font-medium hover:bg-primary-dark transition-colors">
                         Execute

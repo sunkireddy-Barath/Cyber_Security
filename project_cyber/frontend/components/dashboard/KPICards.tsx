@@ -56,10 +56,10 @@ export default function KPICards() {
         return (
           <div
             key={index}
-            className="bg-white rounded-md border border-gray-200 p-3 hover:shadow-md transition-shadow"
+            className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-3 hover:shadow-md transition-all"
           >
             <div className="flex items-start justify-between mb-2">
-              <div className={`${kpi.bgColor} p-1.5 rounded-md`}>
+              <div className={`${kpi.bgColor} dark:bg-gray-700 p-1.5 rounded-md`}>
                 <Icon className={`w-4 h-4 ${kpi.color}`} />
               </div>
               <span
@@ -70,10 +70,10 @@ export default function KPICards() {
                 {kpi.trend}
               </span>
             </div>
-            <div className="text-xl font-bold text-gray-900 mb-0.5">
+            <div className="text-xl font-bold text-gray-900 dark:text-white mb-0.5">
               {kpi.value}
             </div>
-            <div className="text-xs text-gray-600 font-medium">{kpi.label}</div>
+            <div className="text-xs text-gray-600 dark:text-white font-medium">{kpi.label}</div>
           </div>
         )
       })}

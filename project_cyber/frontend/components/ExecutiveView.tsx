@@ -55,7 +55,7 @@ export default function ExecutiveView() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold text-gray-900">
+        <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
           Executive Risk Dashboard
         </h1>
         <button className="flex items-center space-x-2 px-4 py-2 bg-primary text-white rounded-md hover:bg-primary-dark transition-colors">
@@ -71,7 +71,7 @@ export default function ExecutiveView() {
           return (
             <div
               key={index}
-              className="bg-white rounded-md border border-gray-200 p-5"
+              className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-5"
             >
               <div className="flex items-center justify-between mb-3">
                 <Icon className={`w-6 h-6 ${metric.color}`} />
@@ -79,10 +79,10 @@ export default function ExecutiveView() {
                   {metric.trend}
                 </span>
               </div>
-              <div className="text-2xl font-bold text-gray-900 mb-1">
+              <div className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
                 {metric.value}
               </div>
-              <div className="text-xs text-gray-600 font-medium">
+              <div className="text-xs text-gray-600 dark:text-white font-medium">
                 {metric.label}
               </div>
             </div>
@@ -92,48 +92,48 @@ export default function ExecutiveView() {
 
       {/* Financial Impact */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-md border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Financial Impact Summary
           </h3>
           <div className="space-y-4">
-            <div className="flex justify-between items-center pb-3 border-b border-gray-200">
-              <span className="text-sm text-gray-700">
+            <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
+              <span className="text-sm text-gray-700 dark:text-white">
                 Potential Data Breach Cost
               </span>
               <span className="text-lg font-bold text-critical">$4.5M</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b border-gray-200">
-              <span className="text-sm text-gray-700">Ransomware Impact</span>
+            <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
+              <span className="text-sm text-gray-700 dark:text-white">Ransomware Impact</span>
               <span className="text-lg font-bold text-critical">$2.8M</span>
             </div>
-            <div className="flex justify-between items-center pb-3 border-b border-gray-200">
-              <span className="text-sm text-gray-700">
+            <div className="flex justify-between items-center pb-3 border-b border-gray-200 dark:border-gray-700">
+              <span className="text-sm text-gray-700 dark:text-white">
                 Regulatory Fines Risk
               </span>
               <span className="text-lg font-bold text-warning">$900K</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-700 font-semibold">
+              <span className="text-sm text-gray-700 dark:text-white font-semibold">
                 Total Exposure
               </span>
-              <span className="text-xl font-bold text-gray-900">$8.2M</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">$8.2M</span>
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-md border border-gray-200 p-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
             Compliance Status
           </h3>
           <div className="space-y-3">
             {complianceFrameworks.map((framework, index) => (
               <div key={index}>
                 <div className="flex justify-between text-sm mb-1">
-                  <span className="text-gray-700 font-medium">
+                  <span className="text-gray-700 dark:text-white font-medium">
                     {framework.name}
                   </span>
-                  <span className="text-gray-900 font-semibold">
+                  <span className="text-gray-900 dark:text-white font-semibold">
                     {framework.status}%
                   </span>
                 </div>
@@ -150,8 +150,8 @@ export default function ExecutiveView() {
       </div>
 
       {/* Risk Trends */}
-      <div className="bg-white rounded-md border border-gray-200 p-6">
-        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
           Quarterly Risk Trends
         </h3>
         <div className="grid grid-cols-4 gap-4">
@@ -171,11 +171,11 @@ export default function ExecutiveView() {
               }`}
             >
               <div
-                className={`text-2xl font-bold ${selectedQuarter === item.quarter ? "text-primary" : "text-gray-900"}`}
+                className={`text-2xl font-bold ${selectedQuarter === item.quarter ? "text-primary" : "text-gray-900 dark:text-white"}`}
               >
                 {item.quarter} 2024
               </div>
-              <div className="text-sm text-gray-600 mt-1">
+              <div className="text-sm text-gray-600 dark:text-white mt-1">
                 Risk Score: {item.score}
               </div>
             </button>

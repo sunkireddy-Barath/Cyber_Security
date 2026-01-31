@@ -14,8 +14,8 @@ export default function RiskTrendChart() {
   ]
 
   return (
-    <div className="bg-white rounded-md border border-gray-200 p-4">
-      <h3 className="text-base font-semibold text-gray-900 mb-3">Risk Trend (Last 30 Days)</h3>
+    <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-4 transition-colors">
+      <h3 className="text-base font-semibold text-gray-900 dark:text-white mb-3">Risk Trend (Last 30 Days)</h3>
       <ResponsiveContainer width="100%" height={180}>
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />

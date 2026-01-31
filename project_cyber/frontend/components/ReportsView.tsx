@@ -104,10 +104,10 @@ export default function ReportsView() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
             Security Reports & Analytics
           </h1>
-          <p className="text-sm text-gray-600 mt-1">
+          <p className="text-sm text-gray-600 dark:text-white mt-1">
             Comprehensive security metrics and threat intelligence (Jan - Jun
             2024)
           </p>
@@ -123,13 +123,13 @@ export default function ReportsView() {
         {reportCards.map((card, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-md border border-gray-200 p-4"
+            className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-4"
           >
-            <h3 className="text-sm font-medium text-gray-600 mb-2">
+            <h3 className="text-sm font-medium text-gray-600 dark:text-white mb-2">
               {card.title}
             </h3>
             <div className="flex items-end justify-between">
-              <div className="text-2xl font-bold text-gray-900">
+              <div className="text-2xl font-bold text-gray-900 dark:text-white">
                 {card.value}
               </div>
               <div
@@ -145,8 +145,8 @@ export default function ReportsView() {
       {/* Main Charts Grid */}
       <div className="grid grid-cols-2 gap-6">
         {/* Monthly Incidents */}
-        <div className="bg-white rounded-md border border-gray-200 p-6">
-          <h2 className="text-base font-semibold text-gray-900 mb-4">
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+          <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">
             Monthly Security Incidents
           </h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -170,8 +170,8 @@ export default function ReportsView() {
         </div>
 
         {/* Vulnerability Distribution */}
-        <div className="bg-white rounded-md border border-gray-200 p-6">
-          <h2 className="text-base font-semibold text-gray-900 mb-4">
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+          <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">
             Vulnerability Distribution by Type
           </h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -200,8 +200,8 @@ export default function ReportsView() {
       </div>
 
       {/* Threat Activity Trends */}
-      <div className="bg-white rounded-md border border-gray-200 p-6">
-        <h2 className="text-base font-semibold text-gray-900 mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+        <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">
           Threat Activity Trends (Last 6 Weeks)
         </h2>
         <ResponsiveContainer width="100%" height={350}>
@@ -256,8 +256,8 @@ export default function ReportsView() {
       {/* Risk Score Timeline */}
       <div className="grid grid-cols-3 gap-6">
         {/* Risk Score */}
-        <div className="col-span-2 bg-white rounded-md border border-gray-200 p-6">
-          <h2 className="text-base font-semibold text-gray-900 mb-4">
+        <div className="col-span-2 bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+          <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">
             Organizational Risk Score Trend
           </h2>
           <ResponsiveContainer width="100%" height={250}>
@@ -285,8 +285,8 @@ export default function ReportsView() {
         </div>
 
         {/* Report Documents */}
-        <div className="bg-white rounded-md border border-gray-200 p-6">
-          <h2 className="text-base font-semibold text-gray-900 mb-4">
+        <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+          <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">
             Report Documents
           </h2>
           <div className="space-y-3">
@@ -319,14 +319,14 @@ export default function ReportsView() {
             ].map((doc, idx) => (
               <div
                 key={idx}
-                className="flex items-start gap-3 p-3 border border-gray-200 rounded hover:bg-gray-50 cursor-pointer transition-colors"
+                className="flex items-start gap-3 p-3 border border-gray-200 dark:border-gray-700 rounded hover:bg-gray-50 cursor-pointer transition-colors"
               >
                 <FileText
                   size={18}
                   className="text-blue-500 flex-shrink-0 mt-1"
                 />
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
+                  <p className="text-sm font-medium text-gray-900 dark:text-white truncate">
                     {doc.name}
                   </p>
                   <p className="text-xs text-gray-500">
@@ -340,8 +340,8 @@ export default function ReportsView() {
       </div>
 
       {/* Compliance Framework Status */}
-      <div className="bg-white rounded-md border border-gray-200 p-6">
-        <h2 className="text-base font-semibold text-gray-900 mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+        <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">
           Compliance Framework Status
         </h2>
         <div className="space-y-4">
@@ -351,10 +351,10 @@ export default function ReportsView() {
               className="border-b border-gray-100 pb-3 last:border-b-0"
             >
               <div className="flex items-center justify-between mb-2">
-                <h3 className="font-medium text-gray-900">
+                <h3 className="font-medium text-gray-900 dark:text-white">
                   {framework.framework}
                 </h3>
-                <span className="text-sm font-semibold text-gray-700">
+                <span className="text-sm font-semibold text-gray-700 dark:text-white">
                   {framework.percentage}%
                 </span>
               </div>
@@ -370,8 +370,8 @@ export default function ReportsView() {
       </div>
 
       {/* Security Spending */}
-      <div className="bg-white rounded-md border border-gray-200 p-6">
-        <h2 className="text-base font-semibold text-gray-900 mb-4">
+      <div className="bg-white dark:bg-gray-800 rounded-md border border-gray-200 dark:border-gray-700 p-6">
+        <h2 className="text-base font-semibold text-gray-900 dark:text-white mb-4">
           Annual Security Spending Breakdown ($K)
         </h2>
         <ResponsiveContainer width="100%" height={300}>
@@ -404,25 +404,25 @@ export default function ReportsView() {
       {/* Summary Statistics */}
       <div className="grid grid-cols-3 gap-6">
         <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-md border border-blue-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-2">
+          <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
             Mean Time to Detect (MTTD)
           </h3>
           <p className="text-3xl font-bold text-blue-600">4.2 hrs</p>
-          <p className="text-xs text-gray-600 mt-2">Industry avg: 7.4 hrs</p>
+          <p className="text-xs text-gray-600 dark:text-white mt-2">Industry avg: 7.4 hrs</p>
         </div>
         <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-md border border-green-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-2">
+          <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
             Mean Time to Response (MTTR)
           </h3>
           <p className="text-3xl font-bold text-green-600">1.8 hrs</p>
-          <p className="text-xs text-gray-600 mt-2">Industry avg: 2.1 hrs</p>
+          <p className="text-xs text-gray-600 dark:text-white mt-2">Industry avg: 2.1 hrs</p>
         </div>
         <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-md border border-purple-200 p-6">
-          <h3 className="font-semibold text-gray-900 mb-2">
+          <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
             Threat Intel Sources
           </h3>
           <p className="text-3xl font-bold text-purple-600">23</p>
-          <p className="text-xs text-gray-600 mt-2">Active monitoring feeds</p>
+          <p className="text-xs text-gray-600 dark:text-white mt-2">Active monitoring feeds</p>
         </div>
       </div>
     </div>

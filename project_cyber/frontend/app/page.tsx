@@ -17,7 +17,7 @@ export default function Home() {
   const [activeView, setActiveView] = useState("overview");
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
+    <div className="min-h-screen bg-[#F8FAFC] dark:bg-gray-900 transition-colors">
       <TopNavBar />
       <div className="flex">
         <Sidebar activeView={activeView} setActiveView={setActiveView} />

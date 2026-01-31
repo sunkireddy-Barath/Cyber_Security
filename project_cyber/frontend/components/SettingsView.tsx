@@ -1,18 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Save,
   Bell,
   Lock,
   User,
   Shield,
-  Mail,
-  Clock,
   Palette,
 } from "lucide-react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export default function SettingsView() {
+  const { theme, setTheme } = useTheme();
+  
   const [settings, setSettings] = useState({
     // Profile Settings
     fullName: "John Doe",
@@ -34,7 +35,7 @@ export default function SettingsView() {
     loginNotifications: true,
 
     // Preferences
-    theme: "dark",
+    theme: "light",
     language: "en",
     dateFormat: "MM/DD/YYYY",
     timezone: "UTC",
@@ -49,15 +50,27 @@ export default function SettingsView() {
     "idle",
   );
 
+  // Sync theme from context on mount
+  useEffect(() => {
+    setSettings(prev => ({ ...prev, theme }));
+  }, [theme]);
+
   const handleInputChange = (field: string, value: string | boolean) => {
     setSettings((prev) => ({
       ...prev,
       [field]: value,
     }));
+    
+    // Apply theme change immediately when theme is changed
+    if (field === "theme") {
+      setTheme(value as "light" | "dark" | "auto");
+    }
   };
 
   const handleSave = () => {
     setSaveStatus("saving");
+    // Apply theme change
+    setTheme(settings.theme as "light" | "dark" | "auto");
     // Simulate saving
     setTimeout(() => {
       setSaveStatus("saved");
@@ -66,17 +79,17 @@ export default function SettingsView() {
   };
 
   return (
-    <div className="h-full overflow-auto bg-white">
+    <div className="h-full overflow-auto bg-white dark:bg-gray-900 transition-colors">
       <div className="max-w-5xl mx-auto p-6">
-        <h1 className="text-3xl font-bold text-gray-900 mb-8">Settings</h1>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Settings</h1>
 
         {/* Save Status */}
         {saveStatus !== "idle" && (
           <div
             className={`mb-6 p-4 rounded-lg ${
               saveStatus === "saved"
-                ? "bg-green-50 border border-green-200 text-green-800"
-                : "bg-blue-50 border border-blue-200 text-blue-800"
+                ? "bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 text-green-800 dark:text-green-200"
+                : "bg-blue-50 dark:bg-blue-900/30 border border-blue-200 dark:border-blue-700 text-blue-800 dark:text-blue-200"
             }`}
           >
             {saveStatus === "saving"
@@ -87,17 +100,17 @@ export default function SettingsView() {
 
         <div className="space-y-6">
           {/* Profile Settings */}
-          <section className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <section className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <User className="w-5 h-5 text-blue-600" />
-              <h2 className="text-xl font-semibold text-gray-900">
+              <User className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Profile Settings
               </h2>
             </div>
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Full Name
                   </label>
                   <input
@@ -106,24 +119,24 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("fullName", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Email
                   </label>
                   <input
                     type="email"
                     value={settings.email}
                     onChange={(e) => handleInputChange("email", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   />
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Department
                   </label>
                   <input
@@ -132,18 +145,18 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("department", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Role
                   </label>
                   <input
                     type="text"
                     value={settings.role}
                     onChange={(e) => handleInputChange("role", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   />
                 </div>
               </div>
@@ -151,16 +164,16 @@ export default function SettingsView() {
           </section>
 
           {/* Notification Settings */}
-          <section className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <section className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <Bell className="w-5 h-5 text-orange-600" />
-              <h2 className="text-xl font-semibold text-gray-900">
+              <Bell className="w-5 h-5 text-orange-600 dark:text-orange-400" />
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Notification Settings
               </h2>
             </div>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 dark:text-white">
                   Email Alerts
                 </label>
                 <input
@@ -169,11 +182,11 @@ export default function SettingsView() {
                   onChange={(e) =>
                     handleInputChange("emailAlerts", e.target.checked)
                   }
-                  className="w-5 h-5 rounded border-gray-300 text-blue-600"
+                  className="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-blue-600"
                 />
               </div>
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 dark:text-white">
                   Critical Alerts Only
                 </label>
                 <input
@@ -182,11 +195,11 @@ export default function SettingsView() {
                   onChange={(e) =>
                     handleInputChange("criticalAlerts", e.target.checked)
                   }
-                  className="w-5 h-5 rounded border-gray-300 text-blue-600"
+                  className="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-blue-600"
                 />
               </div>
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 dark:text-white">
                   Weekly Reports
                 </label>
                 <input
@@ -195,12 +208,12 @@ export default function SettingsView() {
                   onChange={(e) =>
                     handleInputChange("weeklyReports", e.target.checked)
                   }
-                  className="w-5 h-5 rounded border-gray-300 text-blue-600"
+                  className="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-blue-600"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Alert Threshold
                   </label>
                   <select
@@ -208,7 +221,7 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("alertThreshold", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   >
                     <option>low</option>
                     <option>medium</option>
@@ -217,7 +230,7 @@ export default function SettingsView() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Notification Frequency
                   </label>
                   <select
@@ -225,7 +238,7 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("notificationFrequency", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   >
                     <option value="realtime">Real-time</option>
                     <option value="hourly">Hourly</option>
@@ -238,16 +251,16 @@ export default function SettingsView() {
           </section>
 
           {/* Security Settings */}
-          <section className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <section className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <Lock className="w-5 h-5 text-red-600" />
-              <h2 className="text-xl font-semibold text-gray-900">
+              <Lock className="w-5 h-5 text-red-600 dark:text-red-400" />
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Security Settings
               </h2>
             </div>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 dark:text-white">
                   Two-Factor Authentication
                 </label>
                 <input
@@ -256,11 +269,11 @@ export default function SettingsView() {
                   onChange={(e) =>
                     handleInputChange("twoFactorAuth", e.target.checked)
                   }
-                  className="w-5 h-5 rounded border-gray-300 text-blue-600"
+                  className="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-blue-600"
                 />
               </div>
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 dark:text-white">
                   Login Notifications
                 </label>
                 <input
@@ -269,12 +282,12 @@ export default function SettingsView() {
                   onChange={(e) =>
                     handleInputChange("loginNotifications", e.target.checked)
                   }
-                  className="w-5 h-5 rounded border-gray-300 text-blue-600"
+                  className="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-blue-600"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Session Timeout (minutes)
                   </label>
                   <input
@@ -283,11 +296,11 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("sessionTimeout", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Password Expiry (days)
                   </label>
                   <input
@@ -296,7 +309,7 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("passwordExpiry", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   />
                 </div>
               </div>
@@ -304,23 +317,23 @@ export default function SettingsView() {
           </section>
 
           {/* Preferences */}
-          <section className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <section className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <Palette className="w-5 h-5 text-purple-600" />
-              <h2 className="text-xl font-semibold text-gray-900">
+              <Palette className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Preferences
               </h2>
             </div>
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Theme
                   </label>
                   <select
                     value={settings.theme}
                     onChange={(e) => handleInputChange("theme", e.target.value)}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   >
                     <option>light</option>
                     <option>dark</option>
@@ -328,7 +341,7 @@ export default function SettingsView() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Language
                   </label>
                   <select
@@ -336,7 +349,7 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("language", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   >
                     <option value="en">English</option>
                     <option value="es">Spanish</option>
@@ -347,7 +360,7 @@ export default function SettingsView() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Date Format
                   </label>
                   <select
@@ -355,7 +368,7 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("dateFormat", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   >
                     <option>MM/DD/YYYY</option>
                     <option>DD/MM/YYYY</option>
@@ -363,7 +376,7 @@ export default function SettingsView() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Timezone
                   </label>
                   <select
@@ -371,7 +384,7 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("timezone", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   >
                     <option>UTC</option>
                     <option>EST</option>
@@ -385,16 +398,16 @@ export default function SettingsView() {
           </section>
 
           {/* Data Settings */}
-          <section className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+          <section className="bg-gray-50 dark:bg-gray-800 rounded-lg p-6 border border-gray-200 dark:border-gray-700 transition-colors">
             <div className="flex items-center gap-2 mb-4">
-              <Shield className="w-5 h-5 text-green-600" />
-              <h2 className="text-xl font-semibold text-gray-900">
+              <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Data Settings
               </h2>
             </div>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-gray-700">
+                <label className="text-sm font-medium text-gray-700 dark:text-white">
                   Auto Backup
                 </label>
                 <input
@@ -403,12 +416,12 @@ export default function SettingsView() {
                   onChange={(e) =>
                     handleInputChange("autoBackup", e.target.checked)
                   }
-                  className="w-5 h-5 rounded border-gray-300 text-blue-600"
+                  className="w-5 h-5 rounded border-gray-300 dark:border-gray-600 text-blue-600"
                 />
               </div>
               <div className="grid grid-cols-2 gap-4 mt-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Data Retention (months)
                   </label>
                   <input
@@ -417,11 +430,11 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("dataRetention", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 dark:text-white mb-1">
                     Log Level
                   </label>
                   <select
@@ -429,7 +442,7 @@ export default function SettingsView() {
                     onChange={(e) =>
                       handleInputChange("logLevel", e.target.value)
                     }
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors"
                   >
                     <option>debug</option>
                     <option>info</option>
