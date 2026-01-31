@@ -1,0 +1,23 @@
+{
+  "name": "CONTEXTA-dashboard-backend",
+  "version": "1.0.0",
+  "description": "Frontend API for CONTEXTA Dashboard",
+  "private": true,
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "build": "echo 'No build needed'",
+    "lint": "eslint ."
+  },
+  "keywords": ["security", "risk", "dashboard"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
