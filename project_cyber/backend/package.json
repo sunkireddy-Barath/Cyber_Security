@@ -1,7 +1,7 @@
 {
   "name": "CONTEXTA-dashboard-backend",
   "version": "1.0.0",
-  "description": "Frontend API for CONTEXTA Dashboard",
+  "description": "Backend API for CONTEXTA Dashboard",
   "private": true,
   "scripts": {
     "dev": "nodemon index.js",
